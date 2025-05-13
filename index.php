@@ -1,3 +1,6 @@
+<?php
+session_start(); // Démarre la session pour accéder aux produits enregistrés
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,7 +11,16 @@
 </head>
 <body class="bg-gray-50 flex items-center justify-center min-h-screen">
   <div class="w-full max-w-sm space-y-4">
-    <form action="traitement.php" method="post" class="bg-white shadow-xl rounded-2xl p-8 space-y-6">
+  <div class="mt-4 bg-white text-center py-3 px-4 rounded-xl shadow text-gray-700 text-sm">
+    <?php //Compte le nombre d'article dans la session
+      $i = 0;
+      foreach($_SESSION['products'] ?? [] as $product){
+        $i += $product['qtt'];
+      }
+      echo "🧺 Nombre total d'articles : <strong>$i</strong>";
+    ?>
+  </div>
+    <form action="traitement.php?action=add" method="post" class="bg-white shadow-xl rounded-2xl p-8 space-y-6">
       <h1 class="text-2xl font-semibold text-gray-800 text-center">Ajouter un produit</h1>
 
       <div>
@@ -36,6 +48,16 @@
         Voir le récapitulatif
       </a>
     </div>
+
+      <?php //Message d'ajout d'un article
+      if(isset($_SESSION["message"]) && !empty($_SESSION["message"])){
+        echo "<div class=\" opacity-80 mt-4 bg-white text-center py-3 px-4 rounded-xl shadow text-gray-700 text-sm\">
+".$_SESSION["message"]."  </div>";
+      }
+    ?>
+
   </div>
+
+
 </body>
 </html>

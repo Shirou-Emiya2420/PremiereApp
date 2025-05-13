@@ -1,0 +1,10 @@
+Ajouter trois fonctionnalités utiles dans recap.php :
+
+Supprimer un produit en session (selon le choix de l'utilisateur)
+
+Supprimer tous les produits en session en une seule fois
+
+Modifier les quantités de chaque produit grâce à deux points "+" et "-" positionnés de part et d'autre du nombre dans la cellule
+
+Ajouter des messages de notifications pour la suppression d’article
+Pour faire cohabiter ces fonctionnalités, on utilisera un switch dans traitement.
